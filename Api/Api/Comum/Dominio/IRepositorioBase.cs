@@ -7,12 +7,12 @@ namespace Api.Comum.Dominio
 {
     public interface IRepositorioBase<T> where T : class
     {
-        void Adicionar(T entidade);
-        void Atualizar(T entidade);
-        T ObterPor(int id);
-        IEnumerable<T> ObterTodos();
-        //IEnumerable<T> ObterPor(ISpecification<T> specification);
-        void Remover(T entidade);
-        void Sincronizar(T entidade);
+        List<T> SelecionarTodos();
+        T SelecionarPorId(params object[] variavel);
+        T Adicionar(T objeto);
+        T Alterar(T objeto);
+        void Excluir(T objeto);
+        void Excluir(params object[] variavel);
+        void SalvarAlteracoes();
     }
 }

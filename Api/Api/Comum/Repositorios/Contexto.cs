@@ -1,4 +1,5 @@
 ﻿using Api.Dominio;
+using Api.Dominio.Usuarios;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -14,9 +15,11 @@ namespace Api.Comum.Repositorios
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conexaoTexto = new Conexao().Url();
+            var conexaoTexto = Conexao.Url();
             optionsBuilder.UseSqlServer(conexaoTexto);
         }
         public DbSet<Lancamento> Lancamentos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Salario> Salarios { get; set; }
     }
 }

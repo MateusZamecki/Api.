@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Api.Comum.Dominio;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Api.Comum.Repositorios
 {
-    public class RepositorioBase<TEntidade> where TEntidade : class
+    public class RepositorioBase<TEntidade> : IRepositorioBase<TEntidade>, IDisposable where TEntidade : class
     {
         protected Contexto _contexto;
         public bool _salvarAlteracoes = true;
@@ -39,7 +39,7 @@ namespace Api.Comum.Repositorios
             Excluir(objeto);
         }
 
-        public TEntidade Incluir(TEntidade objeto)
+        public TEntidade Adicionar(TEntidade objeto)
         {
             _contexto.Set<TEntidade>().Add(objeto);
             if (_salvarAlteracoes) _contexto.SaveChanges();

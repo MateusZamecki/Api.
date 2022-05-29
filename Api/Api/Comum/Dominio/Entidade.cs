@@ -7,7 +7,7 @@ namespace Api.Comum.Dominio
 {
     public abstract class Entidade<T> where T : Entidade<T>
     {
-        public virtual int Id { get; protected set; }
+        public int Id { get; set; }
 
         public virtual bool EhTransiente
         {
